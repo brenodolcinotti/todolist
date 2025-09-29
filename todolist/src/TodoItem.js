@@ -4,7 +4,7 @@ export default function ToDoItem({toDo, removeTask}){
     return(
         <li>
             {toDo.data} -- {toDo.hora} -- : {toDo.text}
-            <button onClick={() => removeTask(toDo.id)}>X</button>
+            <button styles={styles.button} onClick={() => removeTask(toDo.id)}>X</button>
         </li>
     );
 };
