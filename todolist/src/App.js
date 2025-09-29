@@ -5,6 +5,7 @@ import TodoList from "./TodoList";
 export default function App(){
   // Variável de estado que armazenará todas as atividades
   const [toDos, setToDos] = useState([]); // [] indica um array
+  const [visivel, setVisivel] = useState(true);
 
   // Variável de estado realtivo a Tarefa
   const [newTask, setNewTask] = useState("");
@@ -35,7 +36,12 @@ export default function App(){
     setToDos(toDos.filter((toDo) => toDo.id !== id));
   }
 
-  return(
+  // Função que mostra/esconde a Lista
+  const showList = () => {
+    setVisivel(!visivel);
+  }
+
+  return( 
     <div style = {styles.container}>
       <h1>Minha To-Do-List</h1>
       <div style = {styles.container}>
@@ -47,6 +53,7 @@ export default function App(){
         style={styles.input}
         />
         <button onClick={addTask}>Adicionar</button>
+        <button onClick={showList}>Lista</button>
       </div>
         <div marginTop="20px">
           <input
@@ -64,8 +71,17 @@ export default function App(){
             style={styles.inputdh}
           />
         </div>
-      <div>
-        <TodoList toDos = {toDos} removeTask = {removeTask}/>
+      <div
+        style={{
+          height:"500px",
+          overflow:"scroll",
+          border:"1px solid #ccc",
+          padding:"10px",
+          marginTop:"20px"
+        }}> 
+        {
+          visivel && <TodoList toDos = {toDos} removeTask = {removeTask}/>
+        }
       </div>
     </div>
   );
