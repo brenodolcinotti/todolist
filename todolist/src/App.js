@@ -36,23 +36,61 @@ export default function App(){
   }
 
   return(
-    <div>
-      <h1>Minha ToDo List</h1>
-      <div>
+    <div style = {styles.container}>
+      <h1>Minha To-Do-List</h1>
+      <div style = {styles.container}>
         <input
         type="text"
         placeholder="Digite uma nova tarefa"
         value={newTask}
         onChange={(e) => setNewTask(e.target.value)}
+        style={styles.input}
         />
         <button onClick={addTask}>Adicionar</button>
       </div>
-
+        <div marginTop="20px">
+          <input
+            type="time"
+            placeholder=""
+            value={hora}
+            onChange={(e) => setHora(e.target.value)}
+            style = {styles.inputdh}
+          />
+          <input
+            type="date"
+            placeholder="Digite/Escolha  uma data"
+            value={dataDia}
+            onChange={(e)=>setDataDia(e.target.value)}
+            style={styles.inputdh}
+          />
+        </div>
       <div>
         <TodoList toDos = {toDos} removeTask = {removeTask}/>
       </div>
     </div>
+  );
+};
 
-  )
-
+const styles = {
+  container: {
+    maxWidth: "600px", 
+    margin: "50px auto",
+    textAlign: "center",
+    fontFamily: "Arial, sans-serif"
+  },
+  inputdh: {
+    padding: "10px",
+    width: "39%",
+    marginRight: "5px",
+    borderRadius: "10px"
+  },
+  input: {
+    padding: "10px",
+    width: "70%",
+    marginRight: "5px"
+  },
+  button: {
+    padding: "10px",
+    cursor: "pointer"
+  }
 }
